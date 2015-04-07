@@ -29,4 +29,12 @@ public class StartController {
 		return true;
 	}
 
+	public ArrayList<Integer> getSizeOfTableaus() {
+		ArrayList<Integer> sizes = new ArrayList<Integer>();
+		for (int i = 0; i < 7; i++) {
+			sizes.add(i+1);
+		}
+		return sizes;
+	}
+
 }

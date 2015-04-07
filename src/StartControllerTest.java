@@ -25,9 +25,22 @@ public class StartControllerTest {
 		assertTrue(startController.isEmptyWaste());
 	}
 	
+	@Test
+	public void deskSizeTest() {
+		assertEquals(24, startController.getDeckSize());
+	}
+	
 	// Para comprobar que es aleatoria
 	// Array de 7x52, llamar al controlador diez mil veces y contar cuántas veces ha salido cada carta en los 7.
 	// Margen (hay probabilidad de 1/52 de que una carta salga en un tableau). Entre 1-300 de 10000 partidas 
+	
+	@Test
+	public void sizeOfTableausTest() {
+		ArrayList<Integer> sizeOfTableaus = startController.getSizeOfTableaus();
+		for (int i = 0; i < sizeOfTableaus.size(); i++) {
+			assertTrue(i+1 == sizeOfTableaus.get(i));
+		}
+	}
 	
 	@Test
 	public void peeksEachTableauTest() {
@@ -42,9 +55,6 @@ public class StartControllerTest {
 		}
 	}
 	
-	@Test
-	public void deskSizeTest() {
-		assertEquals(24, startController.getDeckSize());
-	}
+	
 
 }
