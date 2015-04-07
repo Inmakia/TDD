@@ -9,6 +9,9 @@ public class Card {
 		this.suit = suit;
 	}
 
+	public Card() {
+	}
+
 	public boolean uncovered() {
 		return true;
 	}

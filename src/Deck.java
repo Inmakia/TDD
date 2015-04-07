@@ -1,12 +1,12 @@
-import java.util.ArrayList;
 
+public class Deck extends CardGroup{
 
-public class Deck {
-
-	private ArrayList<Card> cards;
+	private final int INITIAL = 24;
 	
 	public Deck() {
-		this.cards = new ArrayList<Card>();
+		for (int i = 0; i < INITIAL; i++) {
+			this.getCards().add(new Card());
+		}
 	}
 
 }

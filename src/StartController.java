@@ -18,9 +18,14 @@ public class StartController {
 			this.foundations.add(new Foundation());
 		}
 		this.waste = new Waste();
+		this.deck = new Deck();
 		this.tableaus = new ArrayList<Tableau>();
 		for (int i = 0; i < TABLEAUS; i++) {
-			this.tableaus.add(new Tableau());
+			Tableau tableau = new Tableau();
+			for (int j = 0; j < i+1; j++) {
+				tableau.getCards().add(new Card());
+			}
+			this.tableaus.add(tableau);
 		}
 	}
 
@@ -34,11 +39,10 @@ public class StartController {
 
 	public ArrayList<Card> peeksEachTableau() {
 		ArrayList<Card> peeksEachTableau = new ArrayList<Card>();
-		for (int i = 0; i < TABLEAUS; i++) {
+		for (Tableau tableau: tableaus) {
 			Card card;
 			do {
-				Random r = new Random();
-				card = new Card(r.nextInt(3), r.nextInt(11));
+				card = tableau.peek();
 			} while (peeksEachTableau.contains(card));
 			peeksEachTableau.add(card);
 		}
@@ -46,7 +50,7 @@ public class StartController {
 	}
 
 	public Object getDeckSize() {
-		return 24;
+		return this.deck.size();
 	}
 
 	public boolean isEmptyWaste() {
@@ -55,8 +59,8 @@ public class StartController {
 
 	public ArrayList<Integer> getSizeOfTableaus() {
 		ArrayList<Integer> sizes = new ArrayList<Integer>();
-		for (int i = 0; i < 7; i++) {
-			sizes.add(i+1);
+		for (Tableau tableau: tableaus) {
+			sizes.add(tableau.size());
 		}
 		return sizes;
 	}
