@@ -27,11 +27,13 @@ public class StartControllerTest {
 	@Test
 	public void peeksEachTableauTest() {
 		ArrayList<Card> peeksEachTableau = startController.peeksEachTableau();
+		ArrayList<Card> checkedCards = new ArrayList<Card>();
 		assertTrue(startController.isEmptyAllFoundations());
 		for (Card card : peeksEachTableau) {
 			assertNotNull(card);
 			assertTrue(card.uncovered());
-			// Comprobar que las cartas son diferentes
+			assertFalse(checkedCards.contains(card));
+			checkedCards.add(card);
 		}
 	}
 
