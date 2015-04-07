@@ -25,4 +25,8 @@ public class StartController {
 		return 24;
 	}
 
+	public boolean isEmptyWaste() {
+		return true;
+	}
+
 }
