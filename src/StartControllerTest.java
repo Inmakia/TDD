@@ -36,5 +36,10 @@ public class StartControllerTest {
 			checkedCards.add(card);
 		}
 	}
+	
+	@Test
+	public void deskSizeTest() {
+		assertEquals(24, startController.getDeckSize());
+	}
 
 }

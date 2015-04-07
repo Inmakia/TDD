@@ -21,4 +21,8 @@ public class StartController {
 		return peeksEachTableau;
 	}
 
+	public Object getDeckSize() {
+		return 24;
+	}
+
 }
