@@ -3,9 +3,30 @@ import java.util.Random;
 
 
 public class StartController {
+	
+	private ArrayList<ArrayList<Card>> foundations;
+	private ArrayList<Card> waste;
+	private ArrayList<Card> deck;
+	private ArrayList<ArrayList<Card>> tableaus;
+	
+	public StartController() {
+		this.foundations = new ArrayList<ArrayList<Card>>();
+		for (int i = 0; i < 4; i++) {
+			this.foundations.add(new ArrayList<Card>());
+		}
+		this.waste = new ArrayList<Card>();
+		this.tableaus = new ArrayList<ArrayList<Card>>();
+		for (int i = 0; i < 7; i++) {
+			this.tableaus.add(new ArrayList<Card>());
+		}
+	}
 
 	public boolean isEmptyAllFoundations() {
-		return true;
+		boolean empty = true;
+		for (ArrayList<Card> foundation : this.foundations) {
+			empty = empty && foundation.isEmpty();
+		}
+		return empty;
 	}
 
 	public ArrayList<Card> peeksEachTableau() {
@@ -26,7 +47,7 @@ public class StartController {
 	}
 
 	public boolean isEmptyWaste() {
-		return true;
+		return this.waste.isEmpty();
 	}
 
 	public ArrayList<Integer> getSizeOfTableaus() {
