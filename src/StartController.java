@@ -4,26 +4,29 @@ import java.util.Random;
 
 public class StartController {
 	
-	private ArrayList<ArrayList<Card>> foundations;
-	private ArrayList<Card> waste;
-	private ArrayList<Card> deck;
-	private ArrayList<ArrayList<Card>> tableaus;
+	private ArrayList<Foundation> foundations;
+	private Waste waste;
+	private Deck deck;
+	private ArrayList<Tableau> tableaus;
+	
+	private final int TABLEAUS = 7;
+	private final int FOUNDATIONS = 4;
 	
 	public StartController() {
-		this.foundations = new ArrayList<ArrayList<Card>>();
-		for (int i = 0; i < 4; i++) {
-			this.foundations.add(new ArrayList<Card>());
+		this.foundations = new ArrayList<Foundation>();
+		for (int i = 0; i < FOUNDATIONS; i++) {
+			this.foundations.add(new Foundation());
 		}
-		this.waste = new ArrayList<Card>();
-		this.tableaus = new ArrayList<ArrayList<Card>>();
-		for (int i = 0; i < 7; i++) {
-			this.tableaus.add(new ArrayList<Card>());
+		this.waste = new Waste();
+		this.tableaus = new ArrayList<Tableau>();
+		for (int i = 0; i < TABLEAUS; i++) {
+			this.tableaus.add(new Tableau());
 		}
 	}
 
 	public boolean isEmptyAllFoundations() {
 		boolean empty = true;
-		for (ArrayList<Card> foundation : this.foundations) {
+		for (Foundation foundation : this.foundations) {
 			empty = empty && foundation.isEmpty();
 		}
 		return empty;
@@ -31,7 +34,7 @@ public class StartController {
 
 	public ArrayList<Card> peeksEachTableau() {
 		ArrayList<Card> peeksEachTableau = new ArrayList<Card>();
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < TABLEAUS; i++) {
 			Card card;
 			do {
 				Random r = new Random();

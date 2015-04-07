@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 
 
-public class Deck {
+public class Tableau {
 
 	private ArrayList<Card> cards;
 	
-	public Deck() {
+	public Tableau() {
 		this.cards = new ArrayList<Card>();
 	}
 
+	public boolean isEmpty() {
+		return this.cards.isEmpty();
+	}
 }

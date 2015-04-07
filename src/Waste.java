@@ -1,12 +1,16 @@
 import java.util.ArrayList;
 
 
-public class Deck {
+public class Waste {
 
 	private ArrayList<Card> cards;
 	
-	public Deck() {
+	public Waste() {
 		this.cards = new ArrayList<Card>();
+	}
+
+	public boolean isEmpty() {
+		return this.cards.isEmpty();
 	}
 
 }
