@@ -1,6 +1,12 @@
+package test;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+
+import main.Card;
+import main.Foundation;
+import main.MoveCardController;
+import main.Suits;
 
 import org.junit.Before;
 import org.junit.Test;
