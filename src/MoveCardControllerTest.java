@@ -108,5 +108,10 @@ public class MoveCardControllerTest {
 		assertTrue(foundation.size() == foundationSize +1);
 		assertEquals(card, foundation.getTopCard());
 	}
+	
+	@Test
+	public void moveFromWasteToDeckTest() {
+		
+	}
 
 }
