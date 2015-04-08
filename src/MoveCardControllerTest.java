@@ -109,7 +109,7 @@ public class MoveCardControllerTest {
 		oldWasteSize = moveCardController1.getWasteSize();
 		moveCardController1.moveFromWasteToDeck();
 		assertFalse(oldWasteSize == moveCardController1.getDeckSize());
-		assertFalse(moveCardController1.getWasteSize() == 0);
+		assertTrue(moveCardController1.getWasteSize() == 0);
 		
 		cards = new ArrayList<Card>();
 		cards.add(new Card());

@@ -62,8 +62,21 @@ public class MoveCardController {
 	}
 
 	public void moveFromWasteToDeck() {
-		// TODO Auto-generated method stub
-		
+		if (this.getDeckSize() == 0) {
+			if (this.getWasteSize() != 0) {
+				Deck newDeck = new Deck(this.getWasteSize());
+				Waste newWaste = new Waste();
+				Card newCard;
+				int oldWasteSize = this.getWasteSize();
+				for (int i = 0; i < oldWasteSize; i++) {
+					newCard = this.waste.getTopCard();
+					this.waste.getCards().remove(this.waste.getCards().size()-1);
+					newDeck.getCards().set(i, newCard);
+				}
+				this.setDeck(newDeck);
+				this.setWaste(newWaste);
+			}
+		}
 	}
 
 }
