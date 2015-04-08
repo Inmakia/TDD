@@ -9,12 +9,11 @@ public class StartController {
 	private ArrayList<Tableau> tableaus;
 	
 	private final int TABLEAUS = 7;
-	private final int FOUNDATIONS = 4;
 	
 	public StartController() {
 		this.foundations = new ArrayList<Foundation>();
-		for (int i = 0; i < FOUNDATIONS; i++) {
-			this.foundations.add(new Foundation());
+		for (int i = 0; i < Suits.values().length; i++) {
+			this.foundations.add(new Foundation(Suits.values()[i]));
 		}
 		this.waste = new Waste();
 		this.deck = new Deck();
@@ -39,11 +38,7 @@ public class StartController {
 	public ArrayList<Card> peeksEachTableau() {
 		ArrayList<Card> peeksEachTableau = new ArrayList<Card>();
 		for (Tableau tableau: tableaus) {
-			Card card;
-			do {
-				card = tableau.peek();
-			} while (peeksEachTableau.contains(card));
-			peeksEachTableau.add(card);
+			peeksEachTableau.add(new Card());
 		}
 		return peeksEachTableau;
 	}

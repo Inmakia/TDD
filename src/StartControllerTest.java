@@ -48,7 +48,6 @@ public class StartControllerTest {
 		ArrayList<Card> checkedCards = new ArrayList<Card>();
 		assertTrue(startController.isEmptyAllFoundations());
 		for (Card card : peeksEachTableau) {
-			assertNotNull(card);
 			assertTrue(card.uncovered());
 			assertFalse(checkedCards.contains(card));
 			checkedCards.add(card);

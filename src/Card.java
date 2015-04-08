@@ -1,12 +1,12 @@
 
 public class Card {
 
-	private int suit;
+	private Suits suit;
 	private int number;
 	
-	public Card(int suit, int number) {
-		this.number = number;
-		this.suit = suit;
+	public Card(Suits suit, int number) {
+		this.setNumber(number);
+		this.setSuit(suit);
 	}
 
 	public Card() {
@@ -15,12 +15,22 @@ public class Card {
 	public boolean uncovered() {
 		return true;
 	}
-	
-	@Override
-	public boolean equals(Object object) {
-		assert object instanceof Card;
-		Card card = (Card) object;
-		return card.suit == suit && card.number == number;
+
+	public Suits getSuit() {
+		return suit;
 	}
+
+	public void setSuit(Suits suit) {
+		this.suit = suit;
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+	
 
 }

@@ -1,33 +1,48 @@
+import java.util.ArrayList;
+
 
 public class MoveCardController {
 
-	private int deckSize, wasteSize;
+	private Deck deck;
+	private Waste waste;
 	
-	public MoveCardController(int deckSize, int wasteSize) {
-		this.deckSize = deckSize;
-		this.wasteSize = wasteSize;
+	public MoveCardController(int deckSize) {
+		this.deck = new Deck(deckSize);
+		this.waste = new Waste();
 	}
 
 	public void moveFromDeckToWaste() {
-		if(this.deckSize >= 3) {
-			this.deckSize -= 3;
-			this.wasteSize += 3;
-		} else if(this.deckSize == 2) {
-			this.deckSize -= 2;
-			this.wasteSize += 2;
-		} else if(this.deckSize == 1) {
-			this.deckSize -= 1;
-			this.wasteSize += 1;
-		} else if(this.deckSize == 0) {
+		if(this.deck.size() >= 3) {
+			ArrayList<Card> cards = this.deck.drawCards(3);
+			this.waste.addCards(cards);
+		} else if(deck.size() == 2) {
+			ArrayList<Card> cards = this.deck.drawCards(2);
+			this.waste.addCards(cards);
+		} else if(deck.size() == 1) {
+			ArrayList<Card> cards = this.deck.drawCards(1);
+			this.waste.addCards(cards);
+		} else if(deck.size() == 0) {
 		}
 	}
-
+	
 	public int getDeckSize() {
-		return this.deckSize;
+		return this.deck.size();
 	}
 
 	public int getWasteSize() {
-		return this.wasteSize;
+		return this.waste.size();
+	}
+
+	public void moveFromWasteToFoundation(Foundation foundation) {
+		Card card = this.waste.getTopCard();
+		if (foundation.isCorrect(card)) {
+			waste.drawCards(1);
+			foundation.addCard(card);
+		}
+	}
+
+	public void setWasteTopCard(Card card) {
+		this.waste.addCard(card);
 	}
 
 }
