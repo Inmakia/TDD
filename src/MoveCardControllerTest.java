@@ -9,7 +9,6 @@ import org.junit.Test;
 public class MoveCardControllerTest {
 		
 	MoveCardController moveCardController1, moveCardController2, moveCardController3, moveCardController4, moveCardController5;
-	ArrayList<Card> deck, waste;
 	
 	@Before
 	public void before(){
@@ -18,8 +17,6 @@ public class MoveCardControllerTest {
 		moveCardController3 = new MoveCardController(2);
 		moveCardController4 = new MoveCardController(1);
 		moveCardController5 = new MoveCardController(0);
-		deck = new ArrayList<Card>();
-		waste = new ArrayList<Card>();
 	}
 	
 	@Test
@@ -56,13 +53,11 @@ public class MoveCardControllerTest {
 	public void moveFromWasteToFoundationTest() {
 		Foundation foundation;
 		Card card;
-		Waste waste;
 		int wasteSize, foundationSize;
 		
 		
 		foundation = new Foundation(Suits.HEARTS);
 		card = new Card(Suits.HEARTS, 3);
-		waste = new Waste();
 		moveCardController4.setWasteTopCard(card);
 		wasteSize = moveCardController4.getWasteSize();
 		foundationSize = foundation.size();
@@ -73,7 +68,6 @@ public class MoveCardControllerTest {
 		
 		foundation = new Foundation(Suits.DIAMONDS);
 		card = new Card(Suits.HEARTS, 3);
-		waste = new Waste();
 		moveCardController4.setWasteTopCard(card);
 		wasteSize = moveCardController4.getWasteSize();
 		foundationSize = foundation.size();
@@ -84,7 +78,6 @@ public class MoveCardControllerTest {
 		
 		foundation = new Foundation(Suits.DIAMONDS);
 		card = new Card(Suits.HEARTS, 3);
-		waste = new Waste();
 		moveCardController4.setWasteTopCard(card);
 		foundation.addCard(new Card(Suits.DIAMONDS, 1));
 		foundation.addCard(new Card(Suits.DIAMONDS, 2));
@@ -97,7 +90,6 @@ public class MoveCardControllerTest {
 		
 		foundation = new Foundation(Suits.HEARTS);
 		card = new Card(Suits.HEARTS, 3);
-		waste = new Waste();
 		moveCardController4.setWasteTopCard(card);
 		foundation.addCard(new Card(Suits.HEARTS, 1));
 		foundation.addCard(new Card(Suits.HEARTS, 2));
@@ -111,6 +103,36 @@ public class MoveCardControllerTest {
 	
 	@Test
 	public void moveFromWasteToDeckTest() {
+		int oldWasteSize;
+		ArrayList<Card> cards;
+		
+		oldWasteSize = moveCardController1.getWasteSize();
+		moveCardController1.moveFromWasteToDeck();
+		assertFalse(oldWasteSize == moveCardController1.getDeckSize());
+		assertFalse(moveCardController1.getWasteSize() == 0);
+		
+		cards = new ArrayList<Card>();
+		cards.add(new Card());
+		moveCardController3.getWaste().addCards(cards);
+		oldWasteSize = moveCardController3.getWasteSize();
+		moveCardController3.moveFromWasteToDeck();
+		assertFalse(oldWasteSize == moveCardController3.getDeckSize());
+		assertFalse(moveCardController3.getWasteSize() == 0);
+		
+		oldWasteSize = moveCardController5.getWasteSize();
+		moveCardController5.moveFromWasteToDeck();
+		assertTrue(oldWasteSize == moveCardController5.getDeckSize());
+		assertTrue(moveCardController5.getWasteSize() == 0);
+		
+		cards = new ArrayList<Card>();
+		cards.add(new Card());
+		cards.add(new Card());
+		cards.add(new Card());
+		moveCardController5.getWaste().addCards(cards);
+		oldWasteSize = moveCardController5.getWasteSize();
+		moveCardController5.moveFromWasteToDeck();
+		assertTrue(oldWasteSize == moveCardController5.getDeckSize());
+		assertTrue(moveCardController5.getWasteSize() == 0);
 		
 	}
 

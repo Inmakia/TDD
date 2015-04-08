@@ -10,6 +10,34 @@ public class MoveCardController {
 		this.deck = new Deck(deckSize);
 		this.waste = new Waste();
 	}
+	
+	public int getDeckSize() {
+		return this.deck.size();
+	}
+
+	public int getWasteSize() {
+		return this.waste.size();
+	}
+	
+	public void setWasteTopCard(Card card) {
+		this.waste.addCard(card);
+	}
+
+	public Deck getDeck() {
+		return deck;
+	}
+
+	public void setDeck(Deck deck) {
+		this.deck = deck;
+	}
+
+	public Waste getWaste() {
+		return waste;
+	}
+
+	public void setWaste(Waste waste) {
+		this.waste = waste;
+	}
 
 	public void moveFromDeckToWaste() {
 		if(this.deck.size() >= 3) {
@@ -24,14 +52,6 @@ public class MoveCardController {
 		} else if(deck.size() == 0) {
 		}
 	}
-	
-	public int getDeckSize() {
-		return this.deck.size();
-	}
-
-	public int getWasteSize() {
-		return this.waste.size();
-	}
 
 	public void moveFromWasteToFoundation(Foundation foundation) {
 		Card card = this.waste.getTopCard();
@@ -41,8 +61,9 @@ public class MoveCardController {
 		}
 	}
 
-	public void setWasteTopCard(Card card) {
-		this.waste.addCard(card);
+	public void moveFromWasteToDeck() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
